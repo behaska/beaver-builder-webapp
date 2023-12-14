@@ -29,7 +29,7 @@
 </script>
 
 <Drawer>
-	<h2 class="p-4">{m.Navigation()}</h2>
+	<h2 class="p-4">{m.navigation()}</h2>
 	<hr />
 	<LeftMenuRoot />
 </Drawer>

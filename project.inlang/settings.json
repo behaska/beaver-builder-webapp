@@ -7,11 +7,20 @@
     "fr"
   ],
   "modules": [
-    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-empty-pattern@latest/dist/index.js",
-    "https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@latest/dist/index.js",
-    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-valid-js-identifier@latest/dist/index.js"
+    "https://cdn.jsdelivr.net/npm/@inlang/plugin-json@4/dist/index.js",
+    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-missing-translation@1/dist/index.js",
+    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-empty-pattern@1/dist/index.js",
+    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-without-source@1/dist/index.js",
+    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-identical-pattern@1/dist/index.js"
   ],
-  "plugin.inlang.messageFormat": {
-    "pathPattern": "./messages/{languageTag}.json"
+  "messageLintRuleLevels": {
+    "messageLintRule.inlang.missingTranslation": "error"
+  },
+  "plugin.inlang.json": {
+    "pathPattern": "/messages/{languageTag}.json",
+    "variableReferencePattern": [
+      "{",
+      "}"
+    ]
   }
 }

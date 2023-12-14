@@ -1,3 +1,6 @@
 {
-  "hello": "Bonjour {name}"
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "hello": "Hallo {name}",
+  "documents": "Unterlagen",
+  "templates": "Vorlagen"
 }

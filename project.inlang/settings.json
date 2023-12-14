@@ -14,7 +14,14 @@
     "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-identical-pattern@1/dist/index.js",
     "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-valid-js-identifier@latest/dist/index.js"
   ],
+  "messageLintRuleLevels": {
+    "messageLintRule.inlang.missingTranslation": "error"
+  },
   "plugin.inlang.json": {
-    "pathPattern": "./messages/{languageTag}.json"
+    "pathPattern": "./messages/{languageTag}.json",
+    "variableReferencePattern": [
+      "{",
+      "}"
+    ]
   }
 }

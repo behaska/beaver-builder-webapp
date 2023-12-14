@@ -14,7 +14,9 @@
     "test:integration": "playwright test",
     "test:unit": "vitest",
     "vite": "vite",
-    "postinstall": "paraglide-js compile --project ./project.inlang"
+    "postinstall": "paraglide-js compile --project ./project.inlang",
+    "compile": "paraglide-js compile --project ./project.inlang",
+    "watch": "paraglide-js compile --project ./project.inlang --watch"
   },
   "devDependencies": {
     "@inlang/paraglide-js": "1.0.0-prerelease.19",

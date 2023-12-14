@@ -6,13 +6,5 @@
   "navigation": "Navigation",
   "about": "About",
   "blog": "Blog",
-  "contact": "Contact",
-  "leftMenu": {
-    "documents": {
-      "title": "Documents"
-    },
-    "templates": {
-      "title": "Templates"
-    }
-  }
+  "contact": "Contact"
 }

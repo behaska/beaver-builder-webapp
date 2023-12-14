@@ -13,7 +13,7 @@
 
 <nav class="list-nav p-4">
 	<ul>
-		<li><a href="/documents" on:click={drawerClose}>{m.Documents()}</a></li>
-		<li><a href="/templates" on:click={drawerClose}>{m.Templates()}</a></li>
+		<li><a href="/documents" on:click={drawerClose}>{m.documents()}</a></li>
+		<li><a href="/templates" on:click={drawerClose}>{m.templates()}</a></li>
 	</ul>
 </nav>

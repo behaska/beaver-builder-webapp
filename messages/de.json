@@ -1,6 +1,11 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello": "Hallo {name}",
+  "navigation": "Navigation",
   "documents": "Unterlagen",
-  "templates": "Vorlagen"
+  "templates": "Vorlagen",
+  "homepage": "Heim",
+  "about": "Um",
+  "blog": "Blog",
+  "contact": "Kontakt"
 }

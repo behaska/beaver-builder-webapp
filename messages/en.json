@@ -1,11 +1,19 @@
 {
-  "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello": "Hello {name}",
-  "navigation": "Navigation",
   "documents": "Documents",
   "templates": "Templates",
   "homepage": "Home",
+  "navigation": "Navigation",
   "about": "About",
   "blog": "Blog",
-  "contact": "Contact"
+  "contact": "Contact",
+  "leftMenu": {
+    "documents": {
+      "title": "Documents"
+    },
+    "templates": {
+      "title": "Templates"
+    }
+  }
+
 }

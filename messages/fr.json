@@ -1,7 +1,6 @@
 {
-  "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello": "Bonjour {name}",
-  "navigation": "La navigation",
+  "navigation": "Navigation",
   "documents": "Documents",
   "templates": "Modèles",
   "homepage": "Maison",

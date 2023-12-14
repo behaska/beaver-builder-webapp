@@ -1,4 +1,5 @@
 {
+  "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello": "Hello {name}",
   "documents": "Documents",
   "templates": "Templates"

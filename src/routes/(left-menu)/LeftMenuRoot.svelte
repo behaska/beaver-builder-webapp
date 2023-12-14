@@ -1,0 +1,19 @@
+<script lang="ts">
+	import { getDrawerStore } from '@skeletonlabs/skeleton';
+
+	const drawerStore = getDrawerStore();
+
+	function drawerClose(): void {
+		drawerStore.close();
+	}
+
+	import * as m from "$paraglide/messages"
+
+</script>
+
+<nav class="list-nav p-4">
+	<ul>
+		<li><a href="/documents" on:click={drawerClose}>{m.Documents()}</a></li>
+		<li><a href="/templates" on:click={drawerClose}>{m.Templates()}</a></li>
+	</ul>
+</nav>

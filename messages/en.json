@@ -2,5 +2,9 @@
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "hello": "Hello {name}",
   "documents": "Documents",
-  "templates": "Templates"
+  "templates": "Templates",
+  "homepage": "Home",
+  "about": "About",
+  "blog": "Blog",
+  "contact": "Contact"
 }

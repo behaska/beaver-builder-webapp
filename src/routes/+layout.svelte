@@ -56,10 +56,10 @@
 			<svelte:fragment slot="trail">
 				<nav>
 					<ul class="flex">
-						<li class="mx-2"><a href="/">LL.Homepage()</a></li>
-						<li class="mx-2"><a href="/about">LL.About</a></li>
-						<li class="mx-2"><a href="/blog">LL.Blog</a></li>
-						<li class="mx-2"><a href="/contact">LL.Contact</a></li>
+						<li class="mx-2"><a href="/">{m.homepage()}</a></li>
+						<li class="mx-2"><a href="/about">{m.about()}</a></li>
+						<li class="mx-2"><a href="/blog">{m.blog()}</a></li>
+						<li class="mx-2"><a href="/contact">{m.contact()}</a></li>
 					</ul>
 				</nav>
 				<Avatar src="invalid-image.jpg" initials="AB" />

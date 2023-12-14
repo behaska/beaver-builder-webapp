@@ -1,10 +1,18 @@
 {
   "hello": "Hallo {name}",
-  "navigation": "Navigation",
   "documents": "Unterlagen",
   "templates": "Vorlagen",
   "homepage": "Heim",
+  "navigation": "Navigation",
   "about": "Um",
   "blog": "Blog",
-  "contact": "Kontakt"
+  "contact": "Kontakt",
+  "leftMenu": {
+    "documents": {
+      "title": "Unterlagen"
+    },
+    "templates": {
+      "title": "Vorlagen"
+    }
+  }
 }

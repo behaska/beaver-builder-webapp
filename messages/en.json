@@ -1,5 +1,5 @@
 {
-  "hello": "Bonjour {name}",
+  "hello": "Hello {name}",
   "documents": "Documents",
   "templates": "Templates"
 }

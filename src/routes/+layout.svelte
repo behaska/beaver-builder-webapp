@@ -12,7 +12,7 @@
 
 	// Drawer for Hamburger Button in sm mode
 	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
-	import LeftMenuRoot from './(left-menu)/LeftMenuRoot.svelte';
+	import LeftMenuRoot from './webapp/(left-menu)/LeftMenuRoot.svelte';
 
 	initializeStores();
 
@@ -22,22 +22,11 @@
 		drawerStore.open({});
 	}
 
-	$: classesSidebar = $page.url.pathname === '/about' ? 'w-0' : 'w-0 lg:w-64';
+	$: classesSidebar = $page.url.pathname === '/webapp' ? 'w-0 lg:w-64' : 'w-0';
 
 	import * as m from "$paraglide/messages"
 
-	// Modals
-	import AddDocumentModal from './(left-menu)/AddDocumentModal.svelte';
-
-	const modalRegistry: Record<string, ModalComponent> = {
-		// Set a unique modal ID, then pass the component reference
-		addDocumentModal: { ref: AddDocumentModal }
-		// ...
-	};
-
 </script>
-
-<Modal components={modalRegistry} />
 
 <Drawer>
 	<h2 class="p-4">{m.navigation()}</h2>
@@ -68,6 +57,7 @@
 				<nav>
 					<ul class="flex">
 						<li class="mx-2"><a href="/">{m.homepage()}</a></li>
+						<li class="mx-2"><a href="/webapp">{m.webapp()}</a></li>
 						<li class="mx-2"><a href="/about">{m.about()}</a></li>
 						<li class="mx-2"><a href="/blog">{m.blog()}</a></li>
 						<li class="mx-2"><a href="/contact">{m.contact()}</a></li>

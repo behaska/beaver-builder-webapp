@@ -35,8 +35,9 @@
 			console.log('resolved response:', r);
 		});
 	};
-</script>
 
+	// SuperForm
+</script>
 
 <nav class="p-4">
 	<ul>

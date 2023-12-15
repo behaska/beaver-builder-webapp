@@ -35,8 +35,9 @@
 			console.log('resolved response:', r);
 		});
 	};
-</script>
 
+
+</script>
 
 <nav class="p-4">
 	<ul>

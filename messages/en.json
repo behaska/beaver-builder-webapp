@@ -6,5 +6,11 @@
   "navigation": "Navigation",
   "about": "About",
   "blog": "Blog",
-  "contact": "Contact"
+  "contact": "Contact",
+  "addDocumentModalTitle": "Add a new Document",
+  "addDocumentModalDescription": "Fill this form to create a new document",
+  "addDocumentModalNameField": "Name",
+  "addDocumentModalNamePlaceHolder": "Enter name...",
+  "addDocumentModalIconField": "Icon",
+  "addDocumentModalIconPlaceHolder": "Enter icon..."
 }

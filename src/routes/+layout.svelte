@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 
 	import '../app.postcss';
-	import { AppShell, AppBar, Avatar } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, Avatar, Modal, type ModalComponent } from '@skeletonlabs/skeleton';
 
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
@@ -26,7 +26,18 @@
 
 	import * as m from "$paraglide/messages"
 
+	// Modals
+	import AddDocumentModal from './(left-menu)/AddDocumentModal.svelte';
+
+	const modalRegistry: Record<string, ModalComponent> = {
+		// Set a unique modal ID, then pass the component reference
+		addDocumentModal: { ref: AddDocumentModal }
+		// ...
+	};
+
 </script>
+
+<Modal components={modalRegistry} />
 
 <Drawer>
 	<h2 class="p-4">{m.navigation()}</h2>

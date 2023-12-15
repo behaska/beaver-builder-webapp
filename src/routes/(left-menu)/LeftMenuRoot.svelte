@@ -1,15 +1,10 @@
 <script lang="ts">
-	import { getDrawerStore } from '@skeletonlabs/skeleton';
+	import { getDrawerStore, type ModalSettings } from '@skeletonlabs/skeleton';
 
 	const drawerStore = getDrawerStore();
 
 	function drawerClose(): void {
 		drawerStore.close();
-	}
-
-	function addDocument(): void {
-		console.log('Document added !');
-
 	}
 
 	// i18n
@@ -18,7 +13,30 @@
 	//iconify
 	import 'iconify-icon';
 
+	//modal
+	import { getModalStore } from '@skeletonlabs/skeleton';
+
+	const modalStore = getModalStore();
+
+	const addDocument = (): void => {
+		new Promise<boolean>((resolve) => {
+
+			const modal: ModalSettings = {
+				type: 'component',
+				title: m.addDocumentModalTitle(),
+				body: m.addDocumentModalDescription(),
+				component: 'addDocumentModal',
+				response: (r: boolean) => {
+					resolve(r);
+				}
+			};
+			modalStore.trigger(modal);
+		}).then((r: any) => {
+			console.log('resolved response:', r);
+		});
+	};
 </script>
+
 
 <nav class="p-4">
 	<ul>

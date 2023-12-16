@@ -8,6 +8,7 @@
 
 	// CSS
 	const cForm = 'border border-surface-500 p-4 space-y-4 rounded-container-token';
+	const cFormError = 'text-red-500';
 
 	//SuperForms
 	export let data: SuperValidated<AddDocumentElementSchema>;
@@ -15,14 +16,7 @@
 
 	const { form, errors, enhance } = superForm(data);
 
-	console.log('Data in form:', data);
-	console.log('form in form:', $form);
-	console.log('Errors in form:', $errors);
-	console.log('enhance in form:', enhance);
-
 </script>
-
-<SuperDebug data={$form} />
 
 <!-- Component HTML -->
 <form method="POST" use:enhance class="modal-form {cForm}">
@@ -31,7 +25,7 @@
 		<input id="name" name="name" class="input" type="text" bind:value={$form.name}
 					 placeholder={m.addDocumentModalNamePlaceHolder()} />
 		{#if $errors.name}
-			<small>{$errors.name}</small>
+			<small class="{cFormError}">{$errors.name}</small>
 		{/if}
 	</label>
 	<label class="label">
@@ -39,7 +33,7 @@
 		<input id="icon" name="icon" class="input" type="text" bind:value={$form.icon}
 					 placeholder={m.addDocumentModalIconPlaceHolder()} />
 		{#if $errors.icon}
-			<small>{$errors.icon}</small>
+			<small class="{cFormError}">{$errors.icon}</small>
 		{/if}
 	</label>
 	<button class="btn {parent.buttonNeutral}" type="button" on:click={parent.onClose}>{parent.buttonTextCancel}</button>

@@ -14,7 +14,8 @@
 	export let data: SuperValidated<AddDocumentElementSchema>;
 	export let parent: SvelteComponent;
 
-	const { form, errors, enhance } = superForm(data);
+	const { form, errors, enhance } = superForm(data.addDocumentForm,
+		{ taintedMessage: m.taintedMessage() });
 
 </script>
 

@@ -28,7 +28,7 @@
 				component: 'addDocumentModal',
 				response: (r: boolean) => {
 					resolve(r);
-				}
+				},
 			};
 			modalStore.trigger(modal);
 		}).then((r: any) => {
@@ -37,8 +37,6 @@
 	};
 
 	// SuperForm
-</script>
-
 </script>
 
 <nav class="p-4">

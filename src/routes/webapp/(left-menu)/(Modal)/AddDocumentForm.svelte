@@ -15,6 +15,11 @@
 
 	const { form, errors, enhance } = superForm(data);
 
+	console.log('Data in form:', data);
+	console.log('form in form:', $form);
+	console.log('Errors in form:', $errors);
+	console.log('enhance in form:', enhance);
+
 </script>
 
 <SuperDebug data={$form} />
@@ -25,14 +30,20 @@
 		<span>{m.addDocumentModalNameField()}</span>
 		<input id="name" name="name" class="input" type="text" bind:value={$form.name}
 					 placeholder={m.addDocumentModalNamePlaceHolder()} />
+		{#if $errors.name}
+			<small>{$errors.name}</small>
+		{/if}
 	</label>
 	<label class="label">
 		<span>{m.addDocumentModalIconField()}</span>
 		<input id="icon" name="icon" class="input" type="text" bind:value={$form.icon}
 					 placeholder={m.addDocumentModalIconPlaceHolder()} />
+		{#if $errors.icon}
+			<small>{$errors.icon}</small>
+		{/if}
 	</label>
 	<button class="btn {parent.buttonNeutral}" type="button" on:click={parent.onClose}>{parent.buttonTextCancel}</button>
-	<button class="btn {parent.buttonPositive}" type="submit" on:click={parent.onClose}>Submit Form</button>
+	<button class="btn {parent.buttonPositive}" type="submit">Submit Form</button>
 </form>
 
 

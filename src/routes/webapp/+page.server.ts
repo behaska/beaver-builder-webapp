@@ -1,15 +1,11 @@
 import { fail } from '@sveltejs/kit';
 import { z } from 'zod';
 import { superValidate } from 'sveltekit-superforms/server';
-
-const addDocumentSchema = z.object({
-	name: z.string().min(1).max(75).trim(),
-	icon: z.string().min(5).max(50).trim()
-});
+import { addDocumentElementSchema } from '$lib/schemas';
 
 export const load = async (event) => {
 	// Server API:
-	const addDocumentForm = await superValidate(event, addDocumentSchema);
+	const addDocumentForm = await superValidate(event, addDocumentElementSchema);
 
 	// Unless you throw, always return { form } in load and form actions.
 	return { addDocumentForm };
@@ -17,7 +13,7 @@ export const load = async (event) => {
 
 export const actions = {
 	default: async ({ request }) => {
-		const addDocumentForm = await superValidate(request, addDocumentSchema);
+		const addDocumentForm = await superValidate(request, addDocumentElementSchema);
 		console.log('POST', addDocumentForm);
 
 		if (!addDocumentForm.valid) {
@@ -27,5 +23,5 @@ export const actions = {
 		// TODO: Do something with the validated form.data
 
 		return { addDocumentForm };
-	}
+	},
 };

@@ -13,5 +13,9 @@
   "addDocumentModalNameField": "Name",
   "addDocumentModalNamePlaceHolder": "Enter name...",
   "addDocumentModalIconField": "Icon",
-  "addDocumentModalIconPlaceHolder": "Enter icon..."
+  "addDocumentModalIconPlaceHolder": "Enter icon...",
+  "nameFieldRequired": "Name field is required.",
+  "fieldRequired": "{name} field is required.",
+  "fieldTooShort": "{name} field must be {size} or more characters long",
+  "fieldTooLong": "{name} field must be {size} or fewer characters long."
 }

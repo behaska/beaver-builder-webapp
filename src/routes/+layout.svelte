@@ -23,8 +23,9 @@
 	}
 
 	$: classesSidebar = $page.url.pathname === '/webapp' ? 'w-0 lg:w-64' : 'w-0';
+	$: classesSidebar = $page.url.pathname === '/webapp' ? 'w-0 lg:w-64' : 'w-0';
 
-	import * as m from '$paraglide/messages';
+	import * as m from "$paraglide/messages"
 
 </script>
 

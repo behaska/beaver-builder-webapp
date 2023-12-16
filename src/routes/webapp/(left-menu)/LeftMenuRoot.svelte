@@ -36,6 +36,8 @@
 		});
 	};
 
+	// SuperForm
+</script>
 
 </script>
 

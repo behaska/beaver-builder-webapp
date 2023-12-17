@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 
 	import '../app.postcss';
-	import { AppShell, AppBar, Avatar, Modal, type ModalComponent } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, Avatar } from '@skeletonlabs/skeleton';
 
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';

@@ -20,7 +20,6 @@
 
 	const addDocument = (): void => {
 		new Promise<boolean>((resolve) => {
-
 			const modal: ModalSettings = {
 				type: 'component',
 				title: m.addDocumentModalTitle(),
@@ -31,7 +30,7 @@
 				},
 			};
 			modalStore.trigger(modal);
-		}).then((r: any) => {
+		}).then((r: boolean) => {
 			console.log('resolved response:', r);
 		});
 	};

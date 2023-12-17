@@ -6,6 +6,7 @@ import { addDocumentElementSchema } from '$lib/schemas';
 export const load = async (event) => {
 	// Server API:
 	const addDocumentForm = await superValidate(event, addDocumentElementSchema);
+	console.log('superValidate', addDocumentForm);
 
 	// Unless you throw, always return { form } in load and form actions.
 	return { addDocumentForm };

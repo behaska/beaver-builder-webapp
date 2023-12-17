@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 
 	import '../app.postcss';
-	import { AppShell, AppBar, Avatar } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, Avatar, Toast } from '@skeletonlabs/skeleton';
 
 	// Floating UI for Popups
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
@@ -27,6 +27,8 @@
 	import * as m from '$paraglide/messages';
 
 </script>
+
+<Toast />
 
 <Drawer>
 	<h2 class="p-4">{m.navigation()}</h2>

@@ -18,6 +18,7 @@
 	//modal
 	import { getModalStore } from '@skeletonlabs/skeleton';
 	import type { DocumentElement } from '$lib/models/DocumentElement';
+	import DocumentElementComponent from './DocumentElementComponent.svelte';
 
 	const modalStore = getModalStore();
 
@@ -60,10 +61,7 @@
 	<ul>
 		{#each $menuElementStore as document, index}
 			<li class="flex flex-row">
-				<span>
-					<iconify-icon icon="lucide:{document.icon}"></iconify-icon>
-				</span>
-				<span>{document.name}</span>
+				<DocumentElementComponent document={document} />
 			</li>
 		{/each}
 	</ul>

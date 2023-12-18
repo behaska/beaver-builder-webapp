@@ -34,8 +34,6 @@
 			console.log('resolved response:', r);
 		});
 	};
-
-	// SuperForm
 </script>
 
 <nav class="p-4">

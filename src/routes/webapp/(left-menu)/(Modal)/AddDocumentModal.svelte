@@ -53,7 +53,10 @@
 						timeout: 2000,
 					};
 					toastStore.trigger(t);
+					$modalStore[0].response(true);
 					parent.onClose();
+				} else {
+					$modalStore[0].response(false);
 				}
 			},
 		});

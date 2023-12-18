@@ -6,11 +6,11 @@
 	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import type { Writable } from 'svelte/store';
+	import { DocumentElement } from '$lib/models/DocumentElement';
 
 	// Stores
 	import { getModalStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-	import { DocumentElement } from '$lib/models/DocumentElement';
 
 	const menuElementStore: Writable<DocumentElement[]> = localStorageStore('menuElements', []);
 
@@ -48,7 +48,7 @@
 					];
 					console.log('MenuElements Store ', $menuElementStore);
 					const t: ToastSettings = {
-						message: 'Form is valid ...',
+						message: 'New Document has been created !',
 						background: 'variant-filled-success',
 						timeout: 2000,
 					};

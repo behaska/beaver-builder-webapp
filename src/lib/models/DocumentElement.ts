@@ -14,14 +14,14 @@ class DocumentElement {
 
 	private static assertIdValid(id: string) {
 		this.assertNotBlank('id', id);
-		let length = id.length;
-		if (length < 2) {
+		const length = id.length;
+		if (length < 1) {
 			throw new AssertionError({ message: 'id is too short !', actual: length, expected: 16 });
 		}
 	}
 
 	private static assertNotBlank(key: string, value: string) {
-		let length = value.length;
+		const length = value.length;
 		if (length < 2) {
 			throw new AssertionError({ message: `${key} is too short !`, actual: length, expected: 16 });
 		}
@@ -41,8 +41,22 @@ class DocumentElement {
 		this.isExpanded = isExpanded;
 	}
 
-	public static from(placeholder: DocumentElementPlaceHolder): DocumentElement {
-		return new DocumentElement(DocumentElement.generateId(), placeholder.icon, placeholder.name);
+	private static isDocumentElementPlaceHolder(document: string | DocumentElementPlaceHolder): document is DocumentElementPlaceHolder {
+		return (document as DocumentElementPlaceHolder).icon !== undefined;
+	}
+
+	public static from(placeholder: DocumentElementPlaceHolder): DocumentElement;
+	public static from(name: string, icon: string): DocumentElement;
+	public static from(placeholderOrName: string | DocumentElementPlaceHolder, icon?: string): DocumentElement {
+		if (DocumentElement.isDocumentElementPlaceHolder(placeholderOrName)) {
+			return new DocumentElement(DocumentElement.generateId(), placeholderOrName.icon, placeholderOrName.name);
+		}
+
+		if (icon !== undefined) {
+			return new DocumentElement(DocumentElement.generateId(), icon, placeholderOrName);
+		}
+
+		throw new Error('DocumentElement is not valid !');
 	}
 
 	private static generateId(): string {

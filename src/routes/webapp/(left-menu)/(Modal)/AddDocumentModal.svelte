@@ -4,10 +4,15 @@
 	import { superForm, superValidateSync } from 'sveltekit-superforms/client';
 	import { addDocumentElementSchema } from '$lib/schemas';
 	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
+	import { localStorageStore } from '@skeletonlabs/skeleton';
+	import type { Writable } from 'svelte/store';
 
 	// Stores
 	import { getModalStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { getToastStore } from '@skeletonlabs/skeleton';
+	import { DocumentElement } from '$lib/models/DocumentElement';
+
+	const menuElementStore: Writable<DocumentElement[]> = localStorageStore('menuElements', []);
 
 	const toastStore = getToastStore();
 	// Props
@@ -36,9 +41,12 @@
 			multipleSubmits: 'prevent',
 			onUpdate({ form }) {
 				if (form.valid) {
-					// TODO: Do something with the validated form.data
-					console.log('Form is valid !', form);
-
+					// Set the value
+					$menuElementStore = [
+						DocumentElement.from(form.data.name, form.data.icon),
+						...$menuElementStore,
+					];
+					console.log('MenuElements Store ', $menuElementStore);
 					const t: ToastSettings = {
 						message: 'Form is valid ...',
 						background: 'variant-filled-success',

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getDrawerStore, type ModalSettings } from '@skeletonlabs/skeleton';
+	import { getDrawerStore } from '@skeletonlabs/skeleton';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import type { Writable } from 'svelte/store';
 
@@ -16,32 +16,19 @@
 	import 'iconify-icon';
 
 	//modal
-	import { getModalStore } from '@skeletonlabs/skeleton';
-	import type { DocumentElement } from '$lib/models/DocumentElement';
+	import { DocumentElement } from '$lib/models/DocumentElement';
 	import DocumentElementComponent from './DocumentElementComponent.svelte';
+	import AddDocumentButton from './AddDocumentButton.svelte';
+	import { log } from '$lib/scripts/debug-utilities';
 
-	const modalStore = getModalStore();
-
-	const addDocument = (): void => {
-		new Promise<boolean>((resolve) => {
-			const modal: ModalSettings = {
-				type: 'component',
-				title: m.addDocumentModalTitle(),
-				body: m.addDocumentModalDescription(),
-				component: 'addDocumentModal',
-				response: (r: boolean) => {
-					resolve(r);
-				},
-			};
-			modalStore.trigger(modal);
-		}).then((r: boolean) => {
-			console.log('resolved response:', r);
-		});
-	};
-
+	const documentRoot = DocumentElement.from('Documents', 'file-text');
+	const templateRoot = DocumentElement.from('Templates', 'layout-template');
 	// Document Element Store
-	const menuElementStore: Writable<DocumentElement[]> = localStorageStore('menuElements', []);
+	const menuElementStore: Writable<DocumentElement[]> = localStorageStore('menuElements', [
+		documentRoot, templateRoot,
+	]);
 
+	log('$menuElementStore[0]', $menuElementStore[0]);
 </script>
 
 <nav class="p-4">
@@ -50,19 +37,11 @@
 				<iconify-icon icon="lucide:file-text"></iconify-icon>
 				{m.documents()}
 			</span>
-		<span class="actions">
-				<button type="button"
-								class="btn-icon btn-icon-sm variant-filled-surface hidden group-hover:block hover:variant-filled"
-								on:click={addDocument}>
-					<iconify-icon icon="lucide:file-plus-2"></iconify-icon>
-				</button>
-			</span>
+		<AddDocumentButton bind:document={$menuElementStore[0]} />
 	</section>
-	<ul>
-		{#each $menuElementStore as document, index}
-			<li class="flex flex-row">
-				<DocumentElementComponent document={document} />
-			</li>
+	<ul class="flex flex-col">
+		{#each $menuElementStore[0].documents as document}
+			<DocumentElementComponent bind:document={document} />
 		{/each}
 	</ul>
 	<section id="templates" class="flex flex-row group">

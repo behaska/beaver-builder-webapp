@@ -1,28 +1,36 @@
 <script lang="ts">
 	import type { DocumentElement } from '$lib/models/DocumentElement';
+	import AddDocumentButton from './AddDocumentButton.svelte';
 
 	export let document: DocumentElement;
 
-	let children: DocumentElement[] = document.documents;
-	let hasChildren: boolean = children.length > 0;
+	let children: DocumentElement[];
+	$: children = document.documents;
 
+	let hasChildren: boolean;
+	$: hasChildren = children.length > 0;
+
+	console.log(`Node ${document.name} has children:`, children);
 </script>
 
 <!-- Component HTML -->
-<span>
-	<iconify-icon icon="lucide:{document.icon}"></iconify-icon>
-</span>
-<span>{document.name}</span>
+<li class="flex flex-row group">
+	<span>
+		<iconify-icon icon="lucide:{document.icon}"></iconify-icon>
+	</span>
+	<span>{document.name}</span>
+	<AddDocumentButton bind:document={document} />
+</li>
 {#if hasChildren}
-	{#each children as document, index}
-		<li class="flex flex-row">
-			<svelte:self document={document} />
-		</li>
-	{/each}
+	<ul class="flex flex-col">
+		{#each children as node}
+			<svelte:self bind:document={node} />
+		{/each}
+	</ul>
 {/if}
 
 <style lang="postcss">
-    span {
-        margin-left: 0.2rem
+    ul {
+        margin-left: 0.5rem
     }
 </style>

@@ -1,6 +1,6 @@
 import { AssertionError } from '$lib/models/Error/AssertionError';
 
-interface DocumentElementPlaceHolder {
+interface DocumentElementRequiredFields {
 	readonly icon: string;
 	readonly name: string;
 }
@@ -41,13 +41,13 @@ class DocumentElement {
 		this.isExpanded = isExpanded;
 	}
 
-	private static isDocumentElementPlaceHolder(document: string | DocumentElementPlaceHolder): document is DocumentElementPlaceHolder {
-		return (document as DocumentElementPlaceHolder).icon !== undefined;
+	private static isDocumentElementPlaceHolder(document: string | DocumentElementRequiredFields): document is DocumentElementRequiredFields {
+		return (document as DocumentElementRequiredFields).icon !== undefined;
 	}
 
-	public static from(placeholder: DocumentElementPlaceHolder): DocumentElement;
+	public static from(placeholder: DocumentElementRequiredFields): DocumentElement;
 	public static from(name: string, icon: string): DocumentElement;
-	public static from(placeholderOrName: string | DocumentElementPlaceHolder, icon?: string): DocumentElement {
+	public static from(placeholderOrName: string | DocumentElementRequiredFields, icon?: string): DocumentElement {
 		if (DocumentElement.isDocumentElementPlaceHolder(placeholderOrName)) {
 			return new DocumentElement(DocumentElement.generateId(), placeholderOrName.icon, placeholderOrName.name);
 		}
@@ -74,4 +74,4 @@ class DocumentElement {
 }
 
 export { DocumentElement };
-export type { DocumentElementPlaceHolder };
+export type { DocumentElementRequiredFields };

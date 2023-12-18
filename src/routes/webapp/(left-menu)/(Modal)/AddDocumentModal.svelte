@@ -4,15 +4,10 @@
 	import { superForm, superValidateSync } from 'sveltekit-superforms/client';
 	import { addDocumentElementSchema } from '$lib/schemas';
 	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
-	import { localStorageStore } from '@skeletonlabs/skeleton';
-	import type { Writable } from 'svelte/store';
-	import { DocumentElement } from '$lib/models/DocumentElement';
 
 	// Stores
 	import { getModalStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-
-	const menuElementStore: Writable<DocumentElement[]> = localStorageStore('menuElements', []);
 
 	const toastStore = getToastStore();
 	// Props
@@ -41,26 +36,20 @@
 			multipleSubmits: 'prevent',
 			onUpdate({ form }) {
 				if (form.valid) {
-					// Set the value
-					$menuElementStore = [
-						DocumentElement.from(form.data.name, form.data.icon),
-						...$menuElementStore,
-					];
-					console.log('MenuElements Store ', $menuElementStore);
 					const t: ToastSettings = {
 						message: 'New Document has been created !',
 						background: 'variant-filled-success',
 						timeout: 2000,
 					};
 					toastStore.trigger(t);
-					$modalStore[0].response(true);
+					$modalStore[0].response({
+						name: form.data.name,
+						icon: form.data.icon,
+					});
 					parent.onClose();
-				} else {
-					$modalStore[0].response(false);
 				}
 			},
 		});
-
 </script>
 
 <!-- @component This example creates a simple form modal. -->

@@ -15,11 +15,14 @@
 	//iconify
 	import 'iconify-icon';
 
+	console.log(listIcons('', 'lucide'));
+
 	//modal
 	import { DocumentElement } from '$lib/models/DocumentElement';
 	import DocumentElementComponent from './DocumentElementComponent.svelte';
 	import AddDocumentButton from './AddDocumentButton.svelte';
 	import { log } from '$lib/scripts/debug-utilities';
+	import { listIcons } from 'iconify-icon';
 
 	const documentRoot = DocumentElement.from('Documents', 'file-text');
 	const templateRoot = DocumentElement.from('Templates', 'layout-template');

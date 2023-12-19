@@ -8,6 +8,7 @@
 	// Stores
 	import { getModalStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { getToastStore } from '@skeletonlabs/skeleton';
+	import { log } from '$lib/scripts/debug-utilities';
 
 	const toastStore = getToastStore();
 	// Props
@@ -50,6 +51,23 @@
 				}
 			},
 		});
+
+	if ($modalStore[0].meta !== undefined) {
+		form.update(
+			($form) => {
+				log('Données initiales:', $modalStore[0]);
+				log('Form:', form);
+				log('Données du formulaire avant:', $form);
+				$form.name = $form.name === '' ? $modalStore[0].meta.name : $form.name;
+				$form.icon = $form.icon === '' ? $modalStore[0].meta.icon : $form.icon;
+				log('Données du formulaire après:', $form);
+				return $form;
+			},
+			{ taint: false },
+		);
+		log('Données du formulaire en dehors du update:', $form);
+	}
+
 </script>
 
 <!-- @component This example creates a simple form modal. -->

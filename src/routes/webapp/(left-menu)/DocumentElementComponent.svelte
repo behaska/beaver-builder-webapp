@@ -2,6 +2,7 @@
 	import type { DocumentElement } from '$lib/models/DocumentElement';
 	import AddDocumentButton from './AddDocumentButton.svelte';
 	import RemoveDocumentButton from './RemoveDocumentButton.svelte';
+	import UpdateDocumentButton from './UpdateDocumentButton.svelte';
 
 	export let document: DocumentElement;
 	export let parent: DocumentElement;
@@ -21,6 +22,7 @@
 	</span>
 	<span>{document.name}</span>
 	<AddDocumentButton bind:document={document} />
+	<UpdateDocumentButton bind:parent={parent} bind:document={document} />
 	<RemoveDocumentButton bind:parent={parent} bind:document={document} />
 </li>
 {#if hasChildren}

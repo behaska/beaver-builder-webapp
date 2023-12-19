@@ -1,8 +1,10 @@
 <script lang="ts">
 	import type { DocumentElement } from '$lib/models/DocumentElement';
 	import AddDocumentButton from './AddDocumentButton.svelte';
+	import RemoveDocumentButton from './RemoveDocumentButton.svelte';
 
 	export let document: DocumentElement;
+	export let parent: DocumentElement;
 
 	let children: DocumentElement[];
 	$: children = document.documents;
@@ -10,7 +12,6 @@
 	let hasChildren: boolean;
 	$: hasChildren = children.length > 0;
 
-	console.log(`Node ${document.name} has children:`, children);
 </script>
 
 <!-- Component HTML -->
@@ -20,11 +21,12 @@
 	</span>
 	<span>{document.name}</span>
 	<AddDocumentButton bind:document={document} />
+	<RemoveDocumentButton bind:parent={parent} bind:document={document} />
 </li>
 {#if hasChildren}
 	<ul class="flex flex-col">
 		{#each children as node}
-			<svelte:self bind:document={node} />
+			<svelte:self bind:parent={document} bind:document={node} />
 		{/each}
 	</ul>
 {/if}

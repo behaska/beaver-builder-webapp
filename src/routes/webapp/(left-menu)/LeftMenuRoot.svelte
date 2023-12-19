@@ -41,7 +41,7 @@
 	</section>
 	<ul class="flex flex-col">
 		{#each $menuElementStore[0].documents as document}
-			<DocumentElementComponent bind:document={document} />
+			<DocumentElementComponent bind:parent={$menuElementStore[0]} bind:document={document} />
 		{/each}
 	</ul>
 	<section id="templates" class="flex flex-row group">
@@ -67,7 +67,7 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        margin-left: 02rem;
+        margin-left: 2rem;
 
         span.title {
             display: flex;

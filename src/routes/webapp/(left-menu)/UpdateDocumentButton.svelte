@@ -8,6 +8,7 @@
 	//modal
 	import { getModalStore, type ModalSettings } from '@skeletonlabs/skeleton';
 	import { DocumentElement, type DocumentElementRequiredFields } from '$lib/models/DocumentElement';
+	import { log } from '$lib/scripts/debug-utilities';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import type { Writable } from 'svelte/store';
 

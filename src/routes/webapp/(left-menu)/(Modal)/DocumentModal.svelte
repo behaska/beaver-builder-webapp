@@ -6,11 +6,11 @@
 	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
 
 	// Stores
-	import { getModalStore, type ToastSettings } from '@skeletonlabs/skeleton';
+	import { getModalStore, ListBox, ListBoxItem, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-	import { log } from '$lib/scripts/debug-utilities';
 	import type { DocumentElementRequiredFields } from '$lib/models/DocumentElement';
-	import type { DocumentModalResult } from './DocumentModal';
+	import type { DocumentModalResult, IconElement } from './DocumentModal';
+	import { type Icon, IconifyProvider } from '$lib/icon/iconify-provider';
 
 	const toastStore = getToastStore();
 	// Props
@@ -27,9 +27,39 @@
 	const cHeader = 'text-2xl font-bold';
 
 	const initialDocument: DocumentElementRequiredFields = {
-		name: $modalStore[0].name,
-		icon: $modalStore[0].icon,
+		name: $modalStore[0].meta.name,
+		icon: $modalStore[0].meta.icon,
 	};
+
+	function contains(icon: Icon, searchedIcon: string) {
+		return icon.name.toLowerCase().includes(searchedIcon) || icon.icon.toLocaleLowerCase().includes(searchedIcon);
+	}
+
+	function makeIconSet(icons: Icon[], filter: string): IconElement[] {
+		const effectiveFilter = filter.trim();
+		if (effectiveFilter.length > 0) {
+			return icons
+				.filter(icon => contains(icon, searchedIcon))
+				.map(icon => {
+					return {
+						label: icon.name,
+						value: icon.icon,
+					};
+				});
+		}
+		return icons.map(icon => {
+			return {
+				label: icon.name,
+				value: icon.icon,
+			};
+		});
+	}
+
+	let searchedIcon: string = '';
+	let icons: IconElement[] = [];
+
+	$ :  icons = makeIconSet(IconifyProvider.getIconSet(), searchedIcon);
+
 	//SuperForms
 	const { form, errors, enhance } =
 		superForm(superValidateSync($modalStore[0].meta, addDocumentElementSchema), {
@@ -84,7 +114,6 @@
 			raw={false}
 			functions={false}
 			theme='default'
-			ref={HTMLPreElement}
 		/>
 		<!-- Enable for debugging: -->
 		<form method="POST" use:enhance class="modal-form {cForm}">
@@ -98,13 +127,37 @@
 			</label>
 			<label class="label">
 				<span>{m.addDocumentModalIconField()}</span>
-				<input id="icon" name="icon" class="input" type="text" bind:value={$form.icon}
-							 placeholder={m.addDocumentModalIconPlaceHolder()} />
-				{#if $errors.icon}
-					<small class="{cFormError}">{$errors.icon}</small>
-				{/if}
 			</label>
-			<!-- prettier-ignore -->
+
+			<div class="card">
+				<header class="card-header">
+					<h2>Choose your icon</h2>
+					<div class="input-group input-group-divider grid-cols-[auto_1fr_auto] mb-1">
+						<div class="input-group-shim">
+							<span class="iconify" data-icon="lucide:search"></span>
+						</div>
+						<input type="search" name="search" bind:value={searchedIcon} placeholder="Search..." />
+					</div>
+				</header>
+				<div class="container max-h-32 mx-auto flex overflow-scroll">
+					<section class="p-4h-full overflow-auto my-2 w-full">
+						<ListBox>
+							{#each icons as icon(icon.label)}
+								<ListBoxItem bind:group={$form.icon} name="medium" value={icon.value}>
+									<svelte:fragment slot="lead">
+										<iconify-icon icon="lucide:{icon.value}"></iconify-icon>
+									</svelte:fragment>
+									{icon.label}
+								</ListBoxItem>
+							{/each}
+						</ListBox>
+					</section>
+				</div>
+				<footer class="card-footer">Icon selected :
+					<iconify-icon icon="lucide:{$form.icon}"></iconify-icon>
+					{$form.icon}
+				</footer>
+			</div>
 			<footer class="modal-footer {parent.regionFooter}">
 				<button class="btn {parent.buttonNeutral}" type="button"
 								on:click={parent.onClose}>{parent.buttonTextCancel}</button>

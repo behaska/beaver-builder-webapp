@@ -7,7 +7,7 @@ export const addDocumentElementSchema = z.object({
 		.max(75, { message: m.fieldTooLong({ name: 'Name', size: 75 }) })
 		.trim(),
 	icon: z.string()
-		.min(5, { message: m.fieldTooShort({ name: 'Icon', size: 5 }) })
+		.min(3, { message: m.fieldTooShort({ name: 'Icon', size: 3 }) })
 		.max(50, { message: m.fieldTooLong({ name: 'Icon', size: 50 }) })
 		.trim(),
 });

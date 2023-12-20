@@ -58,6 +58,9 @@ devDependencies:
   eslint-plugin-svelte:
     specifier: ^2.35.1
     version: 2.35.1(eslint@8.56.0)(svelte@4.2.8)
+  flowbite:
+    specifier: ^2.2.1
+    version: 2.2.1
   iconify-icon:
     specifier: ^1.0.8
     version: 1.0.8
@@ -838,6 +841,10 @@ packages:
 
   /@polka/url@1.0.0-next.24:
     resolution: { integrity: sha512-2LuNTFBIO0m7kKIQvvPHN6UE63VjpmL9rnEEaOOaiSPbZK+zUOYIzBAWcED+3XYzhYsd/0mD57VdxAEqqV52CQ== }
+    dev: true
+
+  /@popperjs/core@2.11.8:
+    resolution: { integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A== }
     dev: true
 
   /@rollup/rollup-android-arm-eabi@4.9.0:
@@ -1985,6 +1992,13 @@ packages:
 
   /flatted@3.2.9:
     resolution: { integrity: sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ== }
+    dev: true
+
+  /flowbite@2.2.1:
+    resolution: { integrity: sha512-iiZyBTtriEDRHrqXZgpKHaxl4B2J8HZUP8Yn1RXozUDKszWHDVj4GxQqMMB9AJHRWOgXV/4E/LJZ/zqQgBUhWA== }
+    dependencies:
+      '@popperjs/core': 2.11.8
+      mini-svg-data-uri: 1.4.4
     dev: true
 
   /follow-redirects@1.15.3:

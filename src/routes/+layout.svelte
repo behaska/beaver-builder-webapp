@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-
+	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import '../app.postcss';
 	import { AppShell, AppBar, Avatar, Toast } from '@skeletonlabs/skeleton';
 
@@ -53,6 +53,7 @@
             </span>
 					</button>
 				</div>
+				<LightSwitch />
 			</svelte:fragment>
 			<strong class="text-xl uppercase">Beaver Builder</strong>
 			<svelte:fragment slot="trail">

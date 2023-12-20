@@ -5,4 +5,9 @@ interface DocumentModalResult {
 	readonly document: DocumentElementRequiredFields;
 }
 
-export type { DocumentModalResult };
+interface IconElement {
+	readonly label: string;
+	readonly value: string;
+}
+
+export type { DocumentModalResult, IconElement };

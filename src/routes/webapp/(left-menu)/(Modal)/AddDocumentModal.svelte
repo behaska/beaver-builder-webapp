@@ -9,6 +9,8 @@
 	import { getModalStore, type ToastSettings } from '@skeletonlabs/skeleton';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import { log } from '$lib/scripts/debug-utilities';
+	import type { DocumentElementRequiredFields } from '$lib/models/DocumentElement';
+	import type { DocumentModalResult } from './DocumentModal';
 
 	const toastStore = getToastStore();
 	// Props
@@ -24,6 +26,10 @@
 	const cFormError = 'text-red-500';
 	const cHeader = 'text-2xl font-bold';
 
+	const initialDocument: DocumentElementRequiredFields = {
+		name: $modalStore[0].name,
+		icon: $modalStore[0].icon,
+	};
 	//SuperForms
 	const { form, errors, enhance } =
 		superForm(superValidateSync($modalStore[0].meta, addDocumentElementSchema), {
@@ -36,18 +42,25 @@
 			clearOnSubmit: 'message',
 			multipleSubmits: 'prevent',
 			onUpdate({ form }) {
-				if (form.valid) {
+				const newDocument: DocumentElementRequiredFields = {
+					name: form.data.name,
+					icon: form.data.icon,
+				};
+				if (form.valid && initialDocument !== newDocument) {
 					const t: ToastSettings = {
 						message: 'New Document has been created !',
 						background: 'variant-filled-success',
 						timeout: 2000,
 					};
 					toastStore.trigger(t);
-					$modalStore[0].response({
-						name: form.data.name,
-						icon: form.data.icon,
-					});
+					const result: DocumentModalResult = {
+						isFormValid: true,
+						document: newDocument,
+					};
+					$modalStore[0].response(result);
 					parent.onClose();
+				} else {
+					$modalStore[0].response({ isFormValid: false });
 				}
 			},
 		});

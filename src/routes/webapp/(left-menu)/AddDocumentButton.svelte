@@ -10,6 +10,7 @@
 	import { DocumentElement, type DocumentElementRequiredFields } from '$lib/models/DocumentElement';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import type { Writable } from 'svelte/store';
+	import type { DocumentModalResult } from './(Modal)/DocumentModal';
 
 	export let document: DocumentElement;
 
@@ -29,10 +30,12 @@
 				},
 			};
 			modalStore.trigger(modal);
-		}).then((r: DocumentElementRequiredFields) => {
-			// Ajouter l'objet retourné dans le Local Storage.
-			document.documents.push(DocumentElement.from(r));
-			$menuElementStore = $menuElementStore;
+		}).then((r: DocumentModalResult) => {
+			if (r.isFormValid) {
+				// Ajouter l'objet retourné dans le Local Storage.
+				document.documents.push(DocumentElement.from(r.document));
+				$menuElementStore = $menuElementStore;
+			}
 		});
 	};
 

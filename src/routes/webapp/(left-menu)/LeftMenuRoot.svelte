@@ -21,7 +21,6 @@
 	import { DocumentElement } from '$lib/models/DocumentElement';
 	import DocumentElementComponent from './DocumentElementComponent.svelte';
 	import AddDocumentButton from './AddDocumentButton.svelte';
-	import { log } from '$lib/scripts/debug-utilities';
 	import { listIcons } from 'iconify-icon';
 
 	const documentRoot = DocumentElement.from('Documents', 'file-text');
@@ -31,7 +30,6 @@
 		documentRoot, templateRoot,
 	]);
 
-	log('$menuElementStore[0]', $menuElementStore[0]);
 </script>
 
 <nav class="p-4">

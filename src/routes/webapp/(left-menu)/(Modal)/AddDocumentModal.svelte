@@ -26,7 +26,7 @@
 
 	//SuperForms
 	const { form, errors, enhance } =
-		superForm(superValidateSync(addDocumentElementSchema), {
+		superForm(superValidateSync($modalStore[0].meta, addDocumentElementSchema), {
 			SPA: true,
 			validators: addDocumentElementSchema,
 			validationMethod: 'auto',
@@ -51,22 +51,6 @@
 				}
 			},
 		});
-
-	if ($modalStore[0].meta !== undefined) {
-		form.update(
-			($form) => {
-				log('Données initiales:', $modalStore[0]);
-				log('Form:', form);
-				log('Données du formulaire avant:', $form);
-				$form.name = $form.name === '' ? $modalStore[0].meta.name : $form.name;
-				$form.icon = $form.icon === '' ? $modalStore[0].meta.icon : $form.icon;
-				log('Données du formulaire après:', $form);
-				return $form;
-			},
-			{ taint: false },
-		);
-		log('Données du formulaire en dehors du update:', $form);
-	}
 
 </script>
 

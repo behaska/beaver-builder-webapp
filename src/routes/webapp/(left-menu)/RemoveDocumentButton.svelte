@@ -6,7 +6,6 @@
 	import { DocumentElement } from '$lib/models/DocumentElement';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import type { Writable } from 'svelte/store';
-	import { log } from '$lib/scripts/debug-utilities';
 
 	export let parent: DocumentElement;
 	export let document: DocumentElement;
@@ -16,12 +15,8 @@
 
 	const removeDocument = (): void => {
 		// Ajouter l'objet retourné dans le Local Storage.
-		log('parent:', parent);
 		let rootDocuments = parent.documents;
-		log('rootDocuments:', rootDocuments);
 		const index = rootDocuments.findIndex((d) => d.id === document.id);
-		log('index:', index);
-		log('document to delete:', parent.documents[index]);
 		parent.documents.splice(index, 1);
 		$menuElementStore = $menuElementStore;
 	};

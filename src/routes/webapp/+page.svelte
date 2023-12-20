@@ -1,12 +1,12 @@
 <script lang="ts">
 	// Modal
 	import { Modal, type ModalComponent } from '@skeletonlabs/skeleton';
-	import AddDocumentModal from './(left-menu)/(Modal)/AddDocumentModal.svelte';
+	import DocumentModal from './(left-menu)/(Modal)/DocumentModal.svelte';
 
 	const modalRegistry: Record<string, ModalComponent> = {
 		// Set a unique modal ID, then pass the component reference
-		addDocumentModal: {
-			ref: AddDocumentModal,
+		documentModal: {
+			ref: DocumentModal,
 		},
 		// ...
 	};

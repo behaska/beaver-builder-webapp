@@ -25,7 +25,7 @@
 				type: 'component',
 				title: m.updateDocumentModalTitle(),
 				body: m.updateDocumentModalDescription(),
-				component: 'addDocumentModal',
+				component: 'documentModal',
 				meta: { name: document.name, icon: document.icon },
 				response: (r: DocumentElementRequiredFields) => {
 					resolve(r);

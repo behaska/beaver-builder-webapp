@@ -24,7 +24,7 @@
 				type: 'component',
 				title: m.addDocumentModalTitle(),
 				body: m.addDocumentModalDescription(),
-				component: 'addDocumentModal',
+				component: 'documentModal',
 				response: (r: DocumentElementRequiredFields) => {
 					resolve(r);
 				},

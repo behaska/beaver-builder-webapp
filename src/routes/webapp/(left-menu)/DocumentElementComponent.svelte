@@ -17,13 +17,15 @@
 
 <!-- Component HTML -->
 <li class="flex flex-row group">
+	<a href='/webapp/documents/{document.id}' class='text-link flex flex-row' type='button'>
 	<span>
 		<iconify-icon icon="lucide:{document.icon}"></iconify-icon>
 	</span>
-	<span>{document.name}</span>
-	<AddDocumentButton bind:document={document} />
-	<UpdateDocumentButton bind:parent={parent} bind:document={document} />
-	<RemoveDocumentButton bind:parent={parent} bind:document={document} />
+		<span>{document.name}</span>
+		<AddDocumentButton bind:document={document} />
+		<UpdateDocumentButton bind:parent={parent} bind:document={document} />
+		<RemoveDocumentButton bind:parent={parent} bind:document={document} />
+	</a>
 </li>
 {#if hasChildren}
 	<ul class="flex flex-col">

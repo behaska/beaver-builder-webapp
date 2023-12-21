@@ -19,7 +19,6 @@
 	import { DocumentElement } from '$lib/models/DocumentElement';
 	import DocumentElementComponent from './DocumentElementComponent.svelte';
 	import AddDocumentButton from './AddDocumentButton.svelte';
-	import { listIcons } from 'iconify-icon';
 
 	const documentRoot = DocumentElement.from('Documents', 'file-text');
 	const templateRoot = DocumentElement.from('Templates', 'layout-template');

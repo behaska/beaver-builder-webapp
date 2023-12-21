@@ -45,13 +45,13 @@
 
 </script>
 
-<span class="actions">
+<div class="actions">
 	<button type="button"
 					class="btn-icon btn-icon-sm variant-filled-surface hidden group-hover:block hover:variant-filled"
 					on:click={() => updateDocument()}>
 		<iconify-icon icon="lucide:clipboard-edit"></iconify-icon>
 	</button>
-</span>
+</div>
 
 <style lang="postcss">
     span.actions {

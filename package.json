@@ -19,6 +19,7 @@
     "watch": "paraglide-js compile --project ./project.inlang --watch"
   },
   "devDependencies": {
+    "@floating-ui/dom": "1.5.3",
     "@inlang/paraglide-js": "1.0.0-prerelease.19",
     "@inlang/paraglide-js-adapter-vite": "^1.0.2",
     "@playwright/test": "^1.40.1",
@@ -53,8 +54,5 @@
     "vitest": "^1.0.4",
     "zod": "^3.22.4"
   },
-  "type": "module",
-  "dependencies": {
-    "@floating-ui/dom": "1.5.3"
-  }
+  "type": "module"
 }

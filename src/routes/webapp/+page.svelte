@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Modal
-	import { Modal, type ModalComponent } from '@skeletonlabs/skeleton';
+	import { getModalStore, Modal, type ModalComponent } from '@skeletonlabs/skeleton';
 	import DocumentModal from './(left-menu)/(Modal)/DocumentModal.svelte';
 
 	const modalRegistry: Record<string, ModalComponent> = {
@@ -10,6 +10,11 @@
 		},
 		// ...
 	};
+
+
+	const modalStore = getModalStore();
+	$: console.log(JSON.stringify($modalStore));
+	$: console.log(JSON.stringify(modalRegistry));
 
 </script>
 

@@ -22,6 +22,7 @@ class IconifyProvider {
 			{ name: 'Rabbit', icon: 'rabbit' },
 			{ name: 'Book', icon: 'book-marked' },
 			{ name: 'Skull', icon: 'skull' },
+			{ name: 'Search', icon: 'search' },
 			{ name: 'Door', icon: 'door-open' },
 			{ name: 'Trees', icon: 'trees' },
 			{ name: 'Factory', icon: 'factory' },

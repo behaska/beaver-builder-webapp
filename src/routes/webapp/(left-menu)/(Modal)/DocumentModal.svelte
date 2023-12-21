@@ -12,6 +12,9 @@
 	import type { DocumentModalResult, IconElement } from './DocumentModal';
 	import { type Icon, IconifyProvider } from '$lib/icon/iconify-provider';
 
+	$: console.log(JSON.stringify($modalStore));
+	console.log('Modal !!!');
+
 	const toastStore = getToastStore();
 	// Props
 	/** Exposes parent props to this component. */

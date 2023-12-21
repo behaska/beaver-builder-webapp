@@ -26,13 +26,11 @@
 				body: m.removeDocumentModalDescription(),
 				// TRUE if confirm pressed, FALSE if cancel pressed
 				response: (r: boolean) => {
-					console.log('response:', r);
 					resolve(r);
 				},
 			};
 			modalStore.trigger(modal);
 		}).then((r: DocumentModalResult) => {
-			console.log('promise result:', r);
 			if (r) {
 				// Supprimer l'objet retourné dans le Local Storage.
 				let rootDocuments = parent.documents;

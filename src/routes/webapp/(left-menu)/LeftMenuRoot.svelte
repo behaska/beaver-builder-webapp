@@ -15,8 +15,6 @@
 	//iconify
 	import 'iconify-icon';
 
-	console.log(listIcons('', 'lucide'));
-
 	//modal
 	import { DocumentElement } from '$lib/models/DocumentElement';
 	import DocumentElementComponent from './DocumentElementComponent.svelte';

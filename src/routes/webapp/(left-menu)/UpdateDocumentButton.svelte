@@ -39,7 +39,6 @@
 				const index = rootDocuments.findIndex((d) => d.id === document.id);
 				parent.documents.splice(index, 1, DocumentElement.from(r.document));
 				$menuElementStore = $menuElementStore;
-				$menuElementStore = $menuElementStore;
 			}
 		});
 	};

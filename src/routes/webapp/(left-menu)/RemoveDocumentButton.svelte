@@ -3,22 +3,44 @@
 	import 'iconify-icon';
 
 	//modal
-	import { DocumentElement } from '$lib/models/DocumentElement';
-	import { localStorageStore } from '@skeletonlabs/skeleton';
+	import { DocumentElement, type DocumentElementRequiredFields } from '$lib/models/DocumentElement';
+	import { getModalStore, localStorageStore, type ModalSettings } from '@skeletonlabs/skeleton';
 	import type { Writable } from 'svelte/store';
+	import * as m from '$paraglide/messages';
+	import type { DocumentModalResult } from './(Modal)/DocumentModal';
 
 	export let parent: DocumentElement;
 	export let document: DocumentElement;
 
 	const menuElementStore: Writable<DocumentElement[]> = localStorageStore('menuElements', []);
 
+	const modalStore = getModalStore();
 
 	const removeDocument = (): void => {
-		// Ajouter l'objet retourné dans le Local Storage.
-		let rootDocuments = parent.documents;
-		const index = rootDocuments.findIndex((d) => d.id === document.id);
-		parent.documents.splice(index, 1);
-		$menuElementStore = $menuElementStore;
+		new Promise<DocumentElementRequiredFields>((resolve) => {
+
+			const modal: ModalSettings = {
+				type: 'confirm',
+				// Data
+				title: m.removeDocumentModalTitle(),
+				body: m.removeDocumentModalDescription(),
+				// TRUE if confirm pressed, FALSE if cancel pressed
+				response: (r: boolean) => {
+					console.log('response:', r);
+					resolve(r);
+				},
+			};
+			modalStore.trigger(modal);
+		}).then((r: DocumentModalResult) => {
+			console.log('promise result:', r);
+			if (r) {
+				// Supprimer l'objet retourné dans le Local Storage.
+				let rootDocuments = parent.documents;
+				const index = rootDocuments.findIndex((d) => d.id === document.id);
+				parent.documents.splice(index, 1);
+				$menuElementStore = $menuElementStore;
+			}
+		});
 	};
 
 </script>

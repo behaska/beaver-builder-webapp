@@ -26,9 +26,12 @@
 	const cFormError = 'text-red-500';
 	const cHeader = 'text-2xl font-bold';
 
-	const initialDocument: DocumentElementRequiredFields = {
+	const initialDocument: DocumentElementRequiredFields = $modalStore[0]?.meta != null ? {
 		name: $modalStore[0].meta.name,
 		icon: $modalStore[0].meta.icon,
+	} : {
+		name: '',
+		icon: '',
 	};
 
 	function contains(icon: Icon, searchedIcon: string) {

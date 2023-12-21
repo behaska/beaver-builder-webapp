@@ -7,7 +7,7 @@
 
 	//modal
 	import { getModalStore, type ModalSettings } from '@skeletonlabs/skeleton';
-	import { DocumentElement, type DocumentElementRequiredFields } from '$lib/models/DocumentElement';
+	import { DocumentElement } from '$lib/models/DocumentElement';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import type { Writable } from 'svelte/store';
 	import type { DocumentModalResult } from './(Modal)/DocumentModal';
@@ -19,13 +19,13 @@
 	const modalStore = getModalStore();
 
 	const addDocument = (): void => {
-		new Promise<DocumentElementRequiredFields>((resolve) => {
+		new Promise<boolean>((resolve) => {
 			const modal: ModalSettings = {
 				type: 'component',
 				title: m.addDocumentModalTitle(),
 				body: m.addDocumentModalDescription(),
 				component: 'documentModal',
-				response: (r: DocumentElementRequiredFields) => {
+				response: (r: boolean) => {
 					resolve(r);
 				},
 			};
@@ -41,13 +41,13 @@
 
 </script>
 
-<span class="actions">
+<div class="actions">
 	<button type="button"
 					class="btn-icon btn-icon-sm variant-filled-surface hidden group-hover:block hover:variant-filled"
 					on:click={() => addDocument()}>
 		<iconify-icon icon="lucide:file-plus-2"></iconify-icon>
 	</button>
-</span>
+</div>
 
 <style lang="postcss">
     span.actions {

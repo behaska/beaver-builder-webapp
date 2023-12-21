@@ -3,8 +3,36 @@
 	// Inspired by https://svelte.dev/repl/b225504c9fea44b189ed5bfb566df6e6?version=4.2.7
 	import { dndzone } from 'svelte-dnd-action';
 	import { flip } from 'svelte/animate';
+	import Tiptap from '$lib/components/rich-text-editor/Tiptap.svelte';
 
-	$: documentId = $page.params.documentId;
+	let documentId: string;
+	$ : documentId = $page.params.documentId;
+
+	// Document Element Store
+	import { localStorageStore } from '@skeletonlabs/skeleton';
+	import type { Writable } from 'svelte/store';
+	import { TipTapDocumentElement } from '$lib/models/TipTapDocumentElement';
+	import { onDestroy, onMount } from 'svelte';
+
+	const documentElementStore: Writable<TipTapDocumentElement[]> = localStorageStore('documentElements', []);
+
+	let document: TipTapDocumentElement;
+
+	let documentIndex: number;
+
+	function getOrCreateDocument(documentId: string) {
+		const documentFound = $documentElementStore.find(tipTapDocument => tipTapDocument.id === documentId);
+		if (documentFound === undefined) {
+			document = new TipTapDocumentElement(documentId, '');
+			$documentElementStore.push(document);
+			$documentElementStore = $documentElementStore;
+		} else {
+			document = documentFound;
+		}
+		documentIndex = $documentElementStore.findIndex(tipTapDocument => tipTapDocument.id === documentId);
+	}
+
+	$ : getOrCreateDocument(documentId);
 
 	const flipDurationMs: number = 100;
 
@@ -43,6 +71,7 @@
 	const handleFinalize = (evt: CustomEvent<DndEvent<ListItem>>) => {
 		items = evt.detail.items;
 	};
+
 </script>
 
 <svelte:head>
@@ -52,6 +81,13 @@
 
 <section>
 	<h1>Welcome home to {documentId}!</h1>
+
+	<h2>A rich WYSIWYG</h2>
+	{#key documentId}
+		<Tiptap bind:document={$documentElementStore[documentIndex]} />
+	{/key}
+
+	<hr>
 
 	<div class='container h-full mx-auto flex justify-center items-center'>
 		<h3>Nombre d'items {items.length}</h3>

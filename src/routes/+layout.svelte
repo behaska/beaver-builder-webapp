@@ -28,6 +28,7 @@
 
 </script>
 
+
 <Toast />
 
 <Drawer>
@@ -66,7 +67,7 @@
 						<li class="mx-2"><a href="/contact">{m.contact()}</a></li>
 					</ul>
 				</nav>
-				<Avatar src="invalid-image.jpg" initials="AB" />
+				<Avatar src="avatar-beaver-builder.png" initials="AB" />
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
@@ -76,6 +77,7 @@
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<slot />
+
 	<svelte:fragment slot="pageFooter">
 
 		<a

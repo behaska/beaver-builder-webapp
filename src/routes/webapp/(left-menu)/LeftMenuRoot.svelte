@@ -27,29 +27,52 @@
 		documentRoot, templateRoot,
 	]);
 
+	// Popup
+	import { popup } from '@skeletonlabs/skeleton';
+	import type { PopupSettings } from '@skeletonlabs/skeleton';
+
+	const popupFeatured: PopupSettings = {
+		event: 'click',
+		target: 'popupFeatured',
+		placement: 'bottom',
+	};
+
 </script>
 
-<nav class="p-4">
-	<section id="documents" class="flex flex-row group">
-			<span class="title">
+<nav class="list-nav m-0 p-0">
+	<ul>
+		<li id="documents" class="flex flex-row group">
+			<span class="badge bg-surface-500">
 				<iconify-icon icon="lucide:file-text"></iconify-icon>
-				{m.documents()}
 			</span>
-		<AddDocumentButton bind:document={$menuElementStore[0]} />
-	</section>
-	<ul class="flex flex-col">
-		{#each $menuElementStore[0].documents as document}
-			<DocumentElementComponent bind:parent={$menuElementStore[0]} bind:document={document} />
-		{/each}
-	</ul>
-	<section id="templates" class="flex flex-row group">
+			<span class="flex-auto">{m.documents()}</span>
+			<span>
+				<button class="btn variant-filled-surface" use:popup={popupFeatured}>
+					<span class="iconify" data-icon="lucide:menu"></span>
+				</button>
+			</span>
+
+			<div class="card p-4 w-72 shadow-xl" data-popup="popupFeatured">
+				<div><p>Actions</p></div>
+				<div class="arrow bg-surface-100-800-token" />
+				<AddDocumentButton bind:document={$menuElementStore[0]} />
+			</div>
+
+		</li>
+		<ul class="list-nav flex flex-col">
+			{#each $menuElementStore[0].documents as document}
+				<DocumentElementComponent bind:parent={$menuElementStore[0]} bind:document={document} />
+			{/each}
+		</ul>
+		<li id="templates" class="flex flex-row group">
 			<span>
 				<iconify-icon icon="lucide:layout-template"></iconify-icon>
 				{m.templates()}
 			</span>
-		<a href="/templates" on:click={drawerClose}>
-		</a>
-	</section>
+			<a href="/templates" on:click={drawerClose}>
+			</a>
+		</li>
+	</ul>
 </nav>
 
 <style lang="postcss">
@@ -59,20 +82,5 @@
 
     section#documents {
         min-height: 50%;
-    }
-
-    li {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        margin-left: 2rem;
-
-        span.title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-left: 0.2rem;
-            margin-bottom: 2rem;
-        }
     }
 </style>

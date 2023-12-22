@@ -5,12 +5,39 @@
 
 html,
 body {
-	@apply h-full overflow-hidden;
+    @apply h-full overflow-hidden;
 }
 
 /* vintage theme */
 @font-face {
-	font-family: 'Abril Fatface';
-	src: url('/fonts/AbrilFatface.ttf');
-	font-display: swap;
+    font-family: 'Abril Fatface';
+    src: url('/fonts/AbrilFatface.ttf');
+    font-display: swap;
 }
+
+div.tiptap {
+    margin: 1rem;
+
+    h1 {
+        margin: 0.5rem 0;
+        font-size: 1.5rem;
+        color: theme('colors.stone.300');
+        text-transform: capitalize;
+    }
+
+    h2 {
+        margin: 0.25rem 0;
+        font-size: 1.25rem;
+        color: theme('colors.stone.400');
+        text-transform: capitalize;
+    }
+
+    p.beaver-builder {
+        margin: 1rem 0;
+        font-size: 1rem;
+        color: theme('colors.stone.500');
+        padding-left: 1rem;
+    }
+
+}
+

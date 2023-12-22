@@ -83,9 +83,11 @@
 	<h1>Welcome home to {documentId}!</h1>
 
 	<h2>A rich WYSIWYG</h2>
-	{#key documentId}
-		<Tiptap bind:document={$documentElementStore[documentIndex]} />
-	{/key}
+	<div class="flex flex-col container h-screen w-screen mx-auto flex justify-center items-center">
+		{#key documentId}
+			<Tiptap bind:document={$documentElementStore[documentIndex]} />
+		{/key}
+	</div>
 
 	<hr>
 

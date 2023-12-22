@@ -18,6 +18,11 @@
 			element: element,
 			extensions: [
 				StarterKit.configure({
+					paragraph: {
+						HTMLAttributes: {
+							class: 'beaver-builder',
+						},
+					},
 					// Disable an included extension
 					history: false,
 					// Configure an included extension
@@ -25,12 +30,18 @@
 						levels: [1, 2],
 					},
 				}),
+
 			],
 			type: 'doc',
 			content: currentContent,
 			autofocus: true,
 			editable: true,
 			injectCSS: false,
+			editorProps: {
+				attributes: {
+					class: 'h-full w-full prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',
+				},
+			},
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;
@@ -41,67 +52,51 @@
 				// send the content to an API here
 			},
 		});
-	});
+	})
+	;
 
 	onDestroy(() => {
 		if (editor) {
 			editor.destroy();
 		}
 	});
+	;
 
 </script>
 
 {#if editor}
 	<div class="menu">
-
-		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 1}).run()}
-			class:active={editor.isActive('heading', { level: 1 })}
+		<button class="btn-icon btn-icon-sm variant-ghost" type="button"
+						on:click={() => editor.chain().focus().toggleHeading({ level: 1}).run()}
+						class:active={editor.isActive('heading', { level: 1 })}
 		>
-			H1
+			<iconify-icon icon="lucide:heading-1" />
 		</button>
-		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-			class:active={editor.isActive('heading', { level: 2 })}
+		<button class="btn-icon btn-icon-sm variant-ghost" type="button"
+						on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+						class:active={editor.isActive('heading', { level: 2 })}
 		>
-			H2
+			<iconify-icon icon="lucide:heading-2" />
 		</button>
-		<button on:click={() => editor.chain().focus().setParagraph().run()} class:active={editor.isActive('paragraph')}>
-			P
+		<button class="btn-icon btn-icon-sm variant-ghost"
+						on:click={() => editor.chain().focus().setParagraph().run()} class:active={editor.isActive('paragraph')}>
+			<iconify-icon icon="lucide:text" />
 		</button>
-		<button on:click={() => editor.chain().focus().toggleBold().run()} class:active={editor.isActive('bold')}>
-			B
+		<button class="btn-icon btn-icon-sm variant-ghost"
+						on:click={() => editor.chain().focus().toggleBlockquote().run()}
+						class:active={editor.isActive('blockquote')}>
+			<iconify-icon icon="lucide:text-quote" />
 		</button>
 	</div>
 {/if}
 
-<div bind:this={element} />
+<div class="h-full w-full" bind:this={element} />
 
 <style lang="postcss">
+
     button.active {
-        background: black;
+        background: gray;
         color: white;
     }
 
-    /* Scoped to the editor */
-    .tiptap {
-        h1 {
-            margin: 1.25rem 0;
-            font-size: 25px;
-        }
-
-        h2 {
-            margin: 1.25rem 0;
-            font-size: 18px;
-        }
-
-        p {
-            margin: 1rem 0;
-            font-size: 12px;
-        }
-
-        b {
-            font-weight: 700;
-        }
-    }
 </style>

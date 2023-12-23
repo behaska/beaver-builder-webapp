@@ -1,19 +1,7 @@
 <script lang="ts">
-	// Modal
-	import { Modal, type ModalComponent } from '@skeletonlabs/skeleton';
-	import DocumentModal from './(left-menu)/(Modal)/DocumentModal.svelte';
 
-	const modalRegistry: Record<string, ModalComponent> = {
-		// Set a unique modal ID, then pass the component reference
-		documentModal: {
-			ref: DocumentModal,
-		},
-		// ...
-	};
 
 </script>
-
-<Modal components={modalRegistry} />
 
 <h1>Beaver Builder WebApp</h1>
 

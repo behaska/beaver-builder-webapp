@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import { LightSwitch, Modal, type ModalComponent } from '@skeletonlabs/skeleton';
 	import '../app.postcss';
 	import { AppShell, AppBar, Avatar, Toast } from '@skeletonlabs/skeleton';
 
@@ -25,9 +25,21 @@
 	$: classesSidebar = $page.url.pathname.includes('webapp') ? 'w-0 lg:w-64' : 'w-0';
 
 	import * as m from '$paraglide/messages';
+	import DocumentModal from './webapp/(left-menu)/(Modal)/DocumentModal.svelte';
+
+	// Modal
+
+	const modalRegistry: Record<string, ModalComponent> = {
+		// Set a unique modal ID, then pass the component reference
+		documentModal: {
+			ref: DocumentModal,
+		},
+		// ...
+	};
 
 </script>
 
+<Modal components={modalRegistry} />
 
 <Toast />
 

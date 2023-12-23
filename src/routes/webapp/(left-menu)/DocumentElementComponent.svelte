@@ -27,12 +27,13 @@
 		</span>
 		<span class="flex-auto">{document.name}</span>
 	</a>
-	<span>
-			<button class="btn variant-filled-surface"
-							use:popup={{ event: 'click', target: 'popupFeatured-' + document.id, placement: 'bottom' }}>
-			<span class="iconify" data-icon="lucide:menu"></span></button>
-		</span>
-	<span class="iconify" data-icon="lucide:more-vertical"></span>
+	<span class="actions flex flex-row">
+		<button class="btn variant-filled-surface"
+						use:popup={{ event: 'click', target: 'popupFeatured-' + document.id, placement: 'bottom' }}>
+			<span class="iconify" data-icon="lucide:menu"></span>
+		</button>
+		<span class="iconify" data-icon="lucide:more-vertical"></span>
+	</span>
 	<div class="card p-4 w-72 h-40 shadow-xl" data-popup="popupFeatured-{document.id}">
 		<div><p>Actions {document.id}</p></div>
 		<div class="arrow bg-surface-100-800-token" />
@@ -53,4 +54,17 @@
     ul {
         margin-left: 0.5rem
     }
+
+    li {
+        align-items: center;
+        justify-content: space-between;
+        align-content: center;
+
+        .actions {
+            align-items: center;
+            justify-content: space-between;
+            align-content: center;
+        }
+    }
+
 </style>

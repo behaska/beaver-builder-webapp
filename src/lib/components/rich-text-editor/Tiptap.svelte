@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, onDestroy, afterUpdate, beforeUpdate } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { Editor, type JSONContent } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import type { TipTapDocumentElement } from '$lib/models/TipTapDocumentElement';

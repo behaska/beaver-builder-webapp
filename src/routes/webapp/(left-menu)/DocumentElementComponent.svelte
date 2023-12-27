@@ -20,15 +20,15 @@
 </script>
 
 <!-- Component HTML -->
-<li class="flex flex-row group">
+<li class="flex flex-row group/document items-center">
 	<a href="/webapp/documents/{document.id}" class='text-link flex flex-row'>
 		<span class="badge bg-surface-500">
 			<iconify-icon icon="lucide:{document.icon}"></iconify-icon>
 		</span>
 		<span class="flex-auto">{document.name}</span>
 	</a>
-	<span class="actions flex flex-row">
-		<button class="btn variant-filled-surface"
+	<span class="actions flex flex-row invisible group-hover/document:visible">
+		<button class="btn-icon btn-icon-sm variant-filled-surface"
 						use:popup={{ event: 'click', target: 'popupFeatured-' + document.id, placement: 'bottom' }}>
 			<span class="iconify" data-icon="lucide:menu"></span>
 		</button>
@@ -64,6 +64,11 @@
             align-items: center;
             justify-content: space-between;
             align-content: center;
+
+            button {
+                padding: 0;
+                margin: 0;
+            }
         }
     }
 

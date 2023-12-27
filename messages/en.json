@@ -22,5 +22,8 @@
   "fieldRequired": "{name} field is required.",
   "fieldTooShort": "{name} field must be {size} or more characters long",
   "fieldTooLong": "{name} field must be {size} or fewer characters long.",
-  "taintedMessage": "Do you to leave Beaver Builder app ? Any update will be lost."
+  "taintedMessage": "Do you to leave Beaver Builder app ? Any update will be lost.",
+  "addActionMenu": "Add",
+  "removeActionMenu": "Remove",
+  "updateActionMenu": "Update"
 }

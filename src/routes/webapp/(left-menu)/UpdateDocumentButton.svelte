@@ -45,11 +45,16 @@
 
 </script>
 
-<div class="actions">
+<div class="actions flex flex-row items-center mb-1">
 	<button type="button"
-					class="btn-icon btn-icon-sm variant-filled-surface hidden group-hover:block hover:variant-filled"
+					class="btn btn-sm variant-filled-surface"
 					on:click={() => updateDocument()}>
-		<iconify-icon icon="lucide:clipboard-edit"></iconify-icon>
+		<span>
+			<iconify-icon icon="lucide:clipboard-edit"></iconify-icon>
+		</span>
+		<span class="ml-2">
+			{m.updateActionMenu()}
+	</span>
 	</button>
 </div>
 

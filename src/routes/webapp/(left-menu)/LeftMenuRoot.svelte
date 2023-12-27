@@ -41,13 +41,14 @@
 
 <nav class="list-nav m-0 p-0">
 	<ul>
-		<li id="documents" class="flex flex-row group">
-			<span class="badge bg-surface-500">
+		<li id="documents" class="flex flex-row group/document items-center">
+			<span class="flex ml-2 mr-1">
 				<iconify-icon icon="lucide:file-text"></iconify-icon>
 			</span>
 			<span class="flex-auto">{m.documents()}</span>
-			<span>
-				<button class="btn variant-filled-surface" use:popup={popupFeatured}>
+			<span class="invisible group-hover/document:visible">
+				<button type="button" class="btn-icon btn-icon-sm variant-filled-surface"
+								use:popup={popupFeatured}>
 					<span class="iconify" data-icon="lucide:menu"></span>
 				</button>
 			</span>
@@ -78,9 +79,10 @@
 <style lang="postcss">
     nav {
         height: 100%;
-    }
 
-    section#documents {
-        min-height: 50%;
+        button {
+            padding: 0;
+            margin: 0;
+        }
     }
 </style>
